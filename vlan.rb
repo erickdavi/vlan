@@ -1,9 +1,8 @@
+#!/usr/local/bin/ruby
 class Vlan
 	attr_accessor :conf_file
-
 	def initialize(conf_file)
 		@conf_file = conf_file
-
 		@hashfile = []
 		File.open(@conf_file, 'r') do |file|
 			while line = file.gets
@@ -12,17 +11,15 @@ class Vlan
 				@hashfile.push(hashline)
 			end
 		end
-	end
-	
-	def format_cachefile
+	end	
+	protected def format_cachefile
 		cachefile = ""
 		@hashfile.each do |hashline|
 			cachefile = cachefile + "#{hashline[:vlan]}:#{hashline[:ip]}:#{hashline[:status]}\n"
 		end			
 		return cachefile
-	end
-	
-	def test_ip(ip)
+	end	
+	protected def test_ip(ip)
 		indx = @hashfile.index do |hashline|
 			hashline[:ip] == ip
 		end
@@ -32,32 +29,23 @@ class Vlan
 			out = {exists: false, status: nil,indx: nil}
 		end			
 	end
-
-	def change_status(ip)
+	protected def change_status(ip)
 		ip_data = self.test_ip(ip)
 		if ip_data[:exists] and ip_data[:status] == 'busy' or ip_data[:status] == 'free'
-			if ip_data[:status] == 'busy'
-				
-				#altera a linha para free
-
+			if ip_data[:status] == 'busy'				
+				@hashfile[ip_data[:indx]][:status] = 'free'				
 			elsif ip_data[:status] == 'free'
-
-				#altera a linha para busy
-
+				@hashfile[ip_data[:indx]][:status] = 'busy'
 			end
-			#Com sorte reescreve o arquivo com a nova conf
-			cache = format_cachefile
-			file = File.new(@conf_file)
-			file.puts(cache)
-
+			File.new(@conf_file,'w').puts(format_cachefile)
+			out = "#{@hashfile[ip_data[:indx]][:ip]} is #{@hashfile[ip_data[:indx]][:status]} now"
 		else
 			out = 'Configuration file error - BAD STATUS'
 		end
-
 	end	
-	def get_hashfile
-		return @hashfile
+	def interface_access(commands)
+		if commands == 'lsip'
+			out = format_cachefile
+		end
 	end
 end
-
-vl = Vlan.new('ddhcp.conf')
