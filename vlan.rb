@@ -43,9 +43,17 @@ class Vlan
 			out = 'Configuration file error - BAD STATUS'
 		end
 	end	
-	def interface_access(commands)
-		if commands == 'lsip'
-			out = format_cachefile
+
+	def newip(vlan, ip)
+		if self.test_ip(ip)
+			hashline = {vlan: vlan, ip: ip, status: 'free'}
+			@hashfile.push(hashline)
+			puts @hashfile
+			#File.new(@conf_file,'w').puts(format_cachefile)	
 		end
 	end
 end
+
+#cmd = Vlan.new("ddhcp.conf")
+
+#cmd.newip("erick", "10.0.0.1")
