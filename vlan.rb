@@ -52,13 +52,11 @@ class Vlan
 		end
 	end	
 
-	protected def newip(vlan, ip)
+	def newip(vlan, ip)
 		ip_query = self.test_ip(ip)
 		if !(ip_query[:exists])
-			hashline = {vlan: vlan, ip: ip, status: 'free'}
-			@hashfile.push(hashline)
-			puts @hashfile
-			File.new(@conf_file,'w').puts(format_cachefile)
+			line = "#{vlan}:#{ip}:free"
+			File.new(@conf_file,'a').puts(line)
 			out = true
 		else
 			out = false	
@@ -69,4 +67,4 @@ end
 cmd = Vlan.new("ddhcp.conf")
 
 #cmd.newip("erick", "10.0.0.2")
-cmd.change_status("10.1.10.22")
+cmd.newip("erick","192.168.0.100")
