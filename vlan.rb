@@ -1,4 +1,3 @@
-
 #!/usr/local/bin/ruby
 class Vlan
 	attr_accessor :conf_file
@@ -13,14 +12,14 @@ class Vlan
 			end
 		end
 	end	
-	protected def format_cachefile
+	def format_cachefile
 		cachefile = ""
 		@hashfile.each do |hashline|
 			cachefile = cachefile + "#{hashline[:vlan]}:#{hashline[:ip]}:#{hashline[:status]}\n"
 		end			
 		return cachefile
 	end	
-	protected def test_ip(ip)
+	def test_ip(ip)
 		indx = @hashfile.index do |hashline|
 			hashline[:ip] == ip
 		end
@@ -30,7 +29,7 @@ class Vlan
 			out = {exists: false, status: nil,indx: nil}
 		end			
 	end
-	protected def change_status(ip)
+	def change_status(ip)
 		ip_data = self.test_ip(ip)
 		if ip_data[:exists] and ip_data[:status] == 'busy' or ip_data[:status] == 'free'
 			if ip_data[:status] == 'busy'
@@ -63,8 +62,3 @@ class Vlan
 		end
 	end
 end
-
-cmd = Vlan.new("ddhcp.conf")
-
-#cmd.newip("erick", "10.0.0.2")
-cmd.newip("erick","192.168.0.100")
