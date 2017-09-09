@@ -17,8 +17,10 @@ when "request"
 		response = vl.change_status(param1, param2)
 		puts response		
 when "include"
-	response = vl.newip(param1, param2)
-	puts response
+	#response = vl.newip(param1, param2)
+	#puts response
+	puts param1
+	puts param2
 when "help"	
 	case param1
 	when "request"

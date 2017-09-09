@@ -82,7 +82,7 @@ class Vlan
 
 	def newip(vlan, ip)
 		ip_query = self.test_ip(ip)
-		if !(ip_query[:exists])
+		if !(ip_query[:exists]) and (ip != "")
 			line = "#{vlan}:#{ip}:free"
 			File.new(@conf_file,'a').puts(line)
 			out = "The ip address #{ip} of vlan #{vlan} were added in configuration file"
@@ -91,3 +91,4 @@ class Vlan
 		end
 	end
 end
+#Comentando qualquer coisa no código
