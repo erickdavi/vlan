@@ -32,20 +32,20 @@ when "list"
 	response = vl.lsip()
 	puts response
 
-when "help"	
+when "help"
 	case param1
 	when "request"
 		puts "vcmd request use ip\nvcmd request vacate ip"
 
-	when "include"		
+	when "include"
 		puts "vcmd include vlan ip"
 	
-	when "remove"		
+	when "remove"
 		puts "vcmd remove ip"
-	when "list"		
+	when "list"
 		puts "vcmd list"
 	else
-		puts "Use [request], [include], [remove] or [list]"		
+		puts "Use [request], [include] or [remove]"
 	end		
 
 else 
