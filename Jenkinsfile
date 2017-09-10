@@ -5,10 +5,6 @@ pipeline {
       		steps {
         		sh 'ls -l'
       		}
-		stage('test') {
-      		steps {
-        		sh 'cat vcmd'
-      		}      		
-    	}
+      	}
   	}
 }
