@@ -90,4 +90,22 @@ class Vlan
 			out = "No change in configuration file"
 		end
 	end
+	def rmip(ip)
+		ip_query = self.test_ip(ip)
+
+
+		if ip_query[:exists] and @hashfile[ip_query[:indx]][:status] == "free"
+			@hashfile.delete_at(ip_query[:indx])
+			File.new(@conf_file,'w').puts(format_cachefile)
+			out = "Done"
+		elsif @hashfile[ip_query[:indx]][:status] == "busy"
+			out = "This ip address is busy"
+		else
+			out = "Ip doesn't exists or their status is Invalid"			
+		end
+	end
+	def lsip()
+		out = self.format_cachefile
+	end		
+
 end

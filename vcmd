@@ -17,16 +17,35 @@ case action
 when "request"
 		response = vl.change_status(param1, param2)
 		puts response		
+
 when "include"
 	response = vl.newip(param1, param2)
 	puts response
+
+when "remove"
+	response = vl.rmip(param1)
+	puts response
+
+when "list"
+	response = vl.lsip()
+	puts response
+
 when "help"	
 	case param1
 	when "request"
 		puts "vcmd request use ip\nvcmd request vacate ip"
+
+	when "include"		
+		puts "vcmd include vlan ip"
+	
+	when "remove"		
+		puts "vcmd remove ip"
+	when "list"		
+		puts "vcmd list"
 	else
-		puts "Use [request], [include] or [list]"		
+		puts "Use [request], [include], [remove] or [list]"		
 	end		
+
 else 
-	puts "Try [request], [include] or [help]."	
+	puts "Try [request], [include], [delete] or [help]."	
 end
