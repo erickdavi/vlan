@@ -20,3 +20,15 @@ Vamos dar liberdade a eles, porém iremos começar a fornecer os IPs da VLAN do 
 > Use log de auditoria, com a classe Logger enviando as informações para um arquivo de log, com informações do usuário(email) que solicitou e o IP liberado.<br>
 
 **Dicas do que usar: File/open/read/write, if/else, Array/each, def, Logger**
+
+### How to use
+> vcmd
+> vcmd help
+> vcmd help request
+> vcmd help include
+> vcmd help remove
+> vcmd request use ip
+> vcmd request vacate ip
+> vcmd include vlan ip
+> vcmd remove ip
+> vcmd list
