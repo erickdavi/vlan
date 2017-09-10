@@ -22,13 +22,13 @@ Vamos dar liberdade a eles, porém iremos começar a fornecer os IPs da VLAN do 
 **Dicas do que usar: File/open/read/write, if/else, Array/each, def, Logger**
 
 ### How to use
-> vcmd
-> vcmd help
-> vcmd help request
-> vcmd help include
-> vcmd help remove
-> vcmd request use ip
-> vcmd request vacate ip
-> vcmd include vlan ip
-> vcmd remove ip
-> vcmd list
+> vcmd<br>
+> vcmd help<br>
+> vcmd help request<br>
+> vcmd help include<br>
+> vcmd help remove<br>
+> vcmd request use ip<br>
+> vcmd request vacate ip<br>
+> vcmd include vlan ip<br>
+> vcmd remove ip<br>
+> vcmd list<br>
