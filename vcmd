@@ -6,21 +6,20 @@ conf_file = "ddhcp.conf"
 @email = ""
 vl = Vlan.new(conf_file)
 
-#####
-
+#Definição dos argumentos
 action = ARGV[0]
 param1 = ARGV[1]
 param2 = ARGV[2]
 param3 = ARGV[3]
+
+#Rotas de opções
 case action
 when "request"
 		response = vl.change_status(param1, param2)
 		puts response		
 when "include"
-	#response = vl.newip(param1, param2)
-	#puts response
-	puts param1
-	puts param2
+	response = vl.newip(param1, param2)
+	puts response
 when "help"	
 	case param1
 	when "request"
