@@ -1,10 +1,12 @@
 #!/usr/bin/ruby
-
 require './vlan.rb'
 
+
 conf_file = "vlan.conf"
-@email = ""
-vl = Vlan.new(conf_file)
+log_file = "vlan.log"
+email = "erickdavi@gmail.com"
+
+vl = Vlan.new(conf_file, log_file)
 
 #Definição dos argumentos
 action = ARGV[0]
@@ -15,15 +17,15 @@ param3 = ARGV[3]
 #Rotas de opções
 case action
 when "request"
-		response = vl.change_status(param1, param2)
+		response = vl.change_status(param1, param2, email)
 		puts response		
 
 when "include"
-	response = vl.newip(param1, param2)
+	response = vl.newip(param1, param2, email)
 	puts response
 
 when "remove"
-	response = vl.rmip(param1)
+	response = vl.rmip(param1, email)
 	puts response
 
 when "list"

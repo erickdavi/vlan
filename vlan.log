@@ -1,0 +1,7 @@
+E, [2017-09-10T03:53:01.715316 #5697] ERROR -- : Configuration not change - erickdavi@gmail.com
+E, [2017-09-10T03:54:43.568107 #5734] ERROR -- : Configuration not change - erickdavi@gmail.com
+I, [2017-09-10T03:54:56.473443 #5738]  INFO -- : 10.1.10.3 is free now by erickdavi@gmail.com
+I, [2017-09-10T03:55:05.488307 #5740]  INFO -- : 10.1.10.3 is busy now by erickdavi@gmail.com
+E, [2017-09-10T03:55:27.590014 #5742] ERROR -- : erick doesn't exists in configuration file
+I, [2017-09-10T03:56:14.939106 #5784]  INFO -- : The ip address 192.168.0.1 of vlan erick were added in configuration file by erickdavi@gmail.com
+I, [2017-09-10T03:56:43.320674 #5788]  INFO -- : 192.168.0.1 removed by erickdavi@gmail.com
