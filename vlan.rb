@@ -5,7 +5,6 @@ class Vlan
 	def initialize(conf_file, log_file)
 		@conf_file = conf_file
 		@log_file = log_file
-
 		if File.exist?(conf_file)
 			@hashfile = []
 			File.open(@conf_file, 'r') do |file|
@@ -19,11 +18,10 @@ class Vlan
 			File.new(conf_file,"w+")
 		end
 		if !File.exist?(log_file)
-			File.new(log_file,"w+")	
+			File.new(log_file,"w+")
 		end
 		@log = Logger.new(log_file)
 	end
-
 	def format_cachefile
 		cachefile = ""
 		@hashfile.each do |hashline|
@@ -39,13 +37,13 @@ class Vlan
 			out = {exists: true, status: @hashfile[indx][:status], indx: indx}
 		else
 			out = {exists: false, status: nil,indx: nil}
-		end			
+		end
 	end
 	def change_status(action, ip, email)
 		ip_query = self.test_ip(ip)
 		@stat = ip_query[:status]
 		if ip_query[:exists] == true
-			if @stat == "free" or @stat	== "busy"
+			if @stat == "free" or @stat == "busy"
 				case action
 				when "use"
 					@stat = "busy"
