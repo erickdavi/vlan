@@ -2,7 +2,7 @@
 
 require './vlan.rb'
 
-conf_file = "ddhcp.conf"
+conf_file = "vlan.conf"
 @email = ""
 vl = Vlan.new(conf_file)
 
